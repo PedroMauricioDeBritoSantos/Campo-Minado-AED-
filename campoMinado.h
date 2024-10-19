@@ -171,6 +171,8 @@ void adivinharPosicao(int** mat, char** matUsuario, int tamanho, int qntMinas) {
     int acertosTotais = (tamanho * tamanho) - qntMinas;
     printf("Comece escolhendo uma coordenada (x,y) do tabuleiro!\n");
     while (scanf("%d %d", &x, &y), acertos != acertosTotais && perdeu == 0) {
+        x = x-1;
+        y = y-1;
         if (mat[x][y] == -1) {
             printf("game over\n");
             matUsuario[x][y] = '*';
@@ -178,8 +180,8 @@ void adivinharPosicao(int** mat, char** matUsuario, int tamanho, int qntMinas) {
         } else {
             processarJogada(mat, matUsuario, tamanho, x, y);
             acertos++;
-        }
-        imprimeMatrizUsuario(matUsuario);
+          }
+         imprimeMatrizUsuario(matUsuario);
     }
     if (perdeu == 0) {
         printf("parabéns, vc eh fera\n");
